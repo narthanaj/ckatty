@@ -1,0 +1,24 @@
+name: Run Shell Script and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Adjust this branch name to your main branch
+
+jobs:
+  run-and-deploy:
+    name: Run Shell Script and Deploy Job
+    runs-on: ubuntu-latest  # You can use other runners if needed
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run Shell Script and Deploy
+        run: |
+          chmod +x deploy.sh
+          ./deploy.sh
+        env:
+          FTP_SERVER_SECRET: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME_SECRET: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD_SECRET: ${{ secrets.FTP_PASSWORD }}
