@@ -18,3 +18,7 @@ jobs:
         run: |
           chmod +x deploy.sh
           ./deploy.sh
+        env:
+          FTP_SERVER_SECRET: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME_SECRET: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD_SECRET: ${{ secrets.FTP_PASSWORD }}
